@@ -1,0 +1,13 @@
+<electrical_system name="electrical">
+
+  <battery name="main-battery">
+    <voltage>24</voltage>
+    <capacity>40</capacity>
+  </battery>
+
+  <bus name="main-bus">
+    <battery>main-battery</battery>
+  </bus>
+
+</electrical_system>
+
