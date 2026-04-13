@@ -11,10 +11,12 @@
 
   <inertia unit="SLUG*FT2">1.0</inertia>
 
-  <starter>
-    <starter-torque unit="FTLB">50</starter-torque>
-    <starter-rpm>200</starter-rpm>
-  </starter>
+    <starter>
+      <starter-torque unit="FTLB">50</starter-torque>
+      <starter-rpm>200</starter-rpm>
+      <electrical-bus>main-bus</electrical-bus>
+      <power-required>1.0</power-required>
+    </starter>
 
   <ignition>
     <magnetos>propulsion/magnetos_cmd</magnetos>

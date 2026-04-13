@@ -85,6 +85,7 @@
    <!-- empty or minimal -->
 </systems>
 
+<systems file="electrical"/>
 <!--systems file="eng-system"/-->
 <!--debug>
     <property>debug/engine</property>
