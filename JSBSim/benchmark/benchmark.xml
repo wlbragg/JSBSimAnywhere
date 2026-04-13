@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<fdm_config name="benchmark" version="2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+
+  <fileheader>
+    <author>Wayne Bragg</author>
+    <description>Minimal benchmark model for JSBSim addon testing.</description>
+  </fileheader>
+
+  <!-- Minimal but VALID metrics -->
+  <metrics>
+    <wingarea unit="FT2">1.0</wingarea>
+    <wingspan unit="FT">1.0</wingspan>
+    <chord unit="FT">1.0</chord>
+
+    <location name="AERORP" unit="FT">
+      <x>0</x>
+      <y>0</y>
+      <z>0</z>
+    </location>
+  </metrics>
+
+    <mass_balance>
+      <emptywt unit="LBS">1.0</emptywt>
+
+      <totalwt unit="LBS">1.0</totalwt>
+
+      <ixx unit="SLUG*FT2">1.0</ixx>
+      <iyy unit="SLUG*FT2">1.0</iyy>
+      <izz unit="SLUG*FT2">1.0</izz>
+
+      <location name="CG" unit="FT">
+        <x>0</x>
+        <y>0</y>
+        <z>0</z>
+      </location>
+    </mass_balance>
+
+<ground_reactions>
+  <contact type="BOGEY">
+    <location unit="FT">
+      <x>0</x>
+      <y>0</y>
+      <z>0</z>
+    </location>
+    <static_friction>0.5</static_friction>
+    <dynamic_friction>0.5</dynamic_friction>
+    <rolling_friction>0.02</rolling_friction>
+    <spring_coeff unit="LBS/FT">1000</spring_coeff>
+    <damping_coeff unit="LBS/FT/SEC">100</damping_coeff>
+  </contact>
+</ground_reactions>
+
+<aerodynamics>
+  <!-- Minimal axis definition -->
+  <axis name="LIFT" type="BODY">
+    <function name="CL">
+      <value>0.0</value>
+    </function>
+  </axis>
+</aerodynamics>
+
+<fcs>benchmark-fcs</fcs>
+
+<flight_control name="benchmark-fcs">
+
+  <property value="0.0">benchmark/input</property>
+  <property value="1.0">benchmark/target</property>
+<property value="0">fcs/benchmark/math-output</property>
+<property value="0">fcs/benchmark/pid-output</property>
+<property value="0">fcs/benchmark/filter-output</property>
+
+
+  <channel name="benchmark">
+
+    <fcs_function name="math-output">
+      <function>
+        <sum>
+          <product>
+            <property>benchmark/input</property>
+            <value>0.123</value>
+          </product>
+
+          <product>
+            <property>benchmark/input</property>
+            <property>benchmark/input</property>
+            <value>0.987</value>
+          </product>
+
+          <product>
+            <value>0.25</value>
+            <sum>
+              <product>
+                <property>benchmark/input</property>
+                <value>0.777</value>
+              </product>
+              <value>0.333</value>
+            </sum>
+          </product>
+
+          <sum>
+            <product>
+              <property>benchmark/input</property>
+              <property>benchmark/input</property>
+              <value>0.111</value>
+            </product>
+            <product>
+              <value>-0.222</value>
+              <property>benchmark/input</property>
+            </product>
+          </sum>
+
+        </sum>
+      </function>
+      <output>fcs/benchmark/math-output</output>
+    </fcs_function>
+
+    <fcs_function name="pid-output">
+      <function>
+        <product>
+          <value>2.0</value>
+          <sum>
+            <property>benchmark/target</property>
+            <product>
+              <value>-1.0</value>
+              <property>benchmark/input</property>
+            </product>
+          </sum>
+        </product>
+      </function>
+    <output>fcs/benchmark/pid-output</output>
+    </fcs_function>
+
+    <fcs_function name="filter-output">
+      <function>
+        <product>
+          <value>0.5</value>
+          <property>fcs/benchmark/pid-output</property>
+        </product>
+      </function>
+    <output>fcs/benchmark/filter-output</output>
+    </fcs_function>
+
+  </channel>
+
+</flight_control>
+
+</fdm_config>

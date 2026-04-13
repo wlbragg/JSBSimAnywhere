@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+    <path>c152.ac</path>
+    <offsets>
+      <x-m>-15</x-m>
+      <y-m>0</y-m>
+      <z-m>.95</z-m>
+    </offsets>
+
+   
+  <!-- Rotate the prop object using engine RPM -->
+  <animation>
+    <type>rotate</type>
+    <object-name>propeller_slow</object-name>
+    <property>/addon/fdm/jsbsim/propulsion/engine[0]/rpm</property>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+    <factor>6</factor>
+  </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>propellerF</object-name>
+        <nopreview/>
+        <condition>
+            <equals>
+                <property>/addon/fdm/jsbsim/propulsion/engine[0]/rpm</property>
+                <value>400</value>
+            </equals>
+        </condition>
+    </animation>
+
+  <!-- Thrust debug arrow -->
+  <!--animation>
+    <type>scale</type>
+    <property>/addon/fdm/jsbsim/propulsion/engine[0]/thrust-lbs</property>
+    <axis>X</axis>
+    <factor>0.001</f
+  </animation-->
+
+</PropertyList>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<piston_engine name="TestEngine">
+
+  <minmp unit="INHG">8.3</minmp>
+  <maxmp unit="INHG">28.5</maxmp>
+  <displacement unit="IN3">320.0</displacement>
+  <maxhp>160.0</maxhp>
+  <cycles>4.0</cycles>
+  <idlerpm>600.0</idlerpm>
+  <maxrpm>2700.0</maxrpm>
+
+  <inertia unit="SLUG*FT2">1.0</inertia>
+
+  <starter>
+    <starter-torque unit="FTLB">50</starter-torque>
+    <starter-rpm>200</starter-rpm>
+  </starter>
+
+  <ignition>
+    <magnetos>propulsion/magnetos_cmd</magnetos>
+  </ignition>
+
+  <!-- Let JSBSim use its built‑in throttle/mixture handling: no <output> -->
+  <input name="throttle">
+    <property>propulsion/engine[0]/throttle-cmd-norm</property>
+  </input>
+
+  <input name="mixture">
+    <property>propulsion/engine[0]/mixture-cmd-norm</property>
+  </input>
+
+  <torque>
+    <table>
+      <independentVar lookup="rpm"/>
+      <tableData>
+        600   80
+        2700  200
+      </tableData>
+    </table>
+  </torque>
+
+  <friction>
+    <table>
+      <independentVar lookup="rpm"/>
+      <tableData>
+        0     20
+        2700  90
+      </tableData>
+    </table>
+  </friction>
+
+  <combustion>
+    <fuel_flow>
+      <table>
+        <independentVar lookup="power"/>
+        <tableData>
+          0    0.00
+          200  0.60
+        </tableData>
+      </table>
+    </fuel_flow>
+  </combustion>
+
+</piston_engine>

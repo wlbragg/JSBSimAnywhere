@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<system name="benchmark">
+
+  <!-- Simple inputs -->
+  <property value="0.0">benchmark/input</property>
+  <property value="1.0">benchmark/target</property>
+
+  <channel name="benchmark">
+
+    <!-- MATH FUNCTION: /fdm/jsbsim/benchmark/math-output -->
+    <fcs_function name="benchmark/math-output">
+      <function>
+        <sum>
+          <!-- term1 = input * 0.123 -->
+          <product>
+            <property>benchmark/input</property>
+            <value>0.123</value>
+          </product>
+
+          <!-- term2 = input * input * 0.987 -->
+          <product>
+            <property>benchmark/input</property>
+            <property>benchmark/input</property>
+            <value>0.987</value>
+          </product>
+
+          <!-- term3 = 0.25 * (input * 0.777 + 0.333) -->
+          <product>
+            <value>0.25</value>
+            <sum>
+              <product>
+                <property>benchmark/input</property>
+                <value>0.777</value>
+              </product>
+              <value>0.333</value>
+            </sum>
+          </product>
+
+          <!-- term4 = input * input * 0.111 - 0.222 * input -->
+          <sum>
+            <product>
+              <property>benchmark/input</property>
+              <property>benchmark/input</property>
+              <value>0.111</value>
+            </product>
+            <product>
+              <value>-0.222</value>
+              <property>benchmark/input</property>
+            </product>
+          </sum>
+
+        </sum>
+      </function>
+    </fcs_function>
+
+    <!-- PID-LIKE FUNCTION: /fdm/jsbsim/benchmark/pid-output -->
+    <fcs_function name="benchmark/pid-output">
+      <function>
+        <product>
+          <value>2.0</value>
+          <!-- (target - input) = target + (-1 * input) -->
+          <sum>
+            <property>benchmark/target</property>
+            <product>
+              <value>-1.0</value>
+              <property>benchmark/input</property>
+            </product>
+          </sum>
+        </product>
+      </function>
+    </fcs_function>
+
+    <!-- FILTER-LIKE FUNCTION: /fdm/jsbsim/benchmark/filter-output -->
+    <fcs_function name="benchmark/filter-output">
+      <function>
+        <product>
+          <value>0.5</value>
+          <property>benchmark/pid-output</property>
+        </product>
+      </function>
+    </fcs_function>
+
+  </channel>
+
+</system>

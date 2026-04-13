@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<fdm_config name="TestEngine" version="2.0">
+
+  <fileheader>
+    <author>JSBSimAnywhere</author>
+    <description>Minimal working JSBSim model</description>
+  </fileheader>
+
+  <!-- Basic geometry -->
+  <metrics>
+    <wingarea unit="FT2">100</wingarea>
+    <wingspan unit="FT">30</wingspan>
+    <chord unit="FT">3.3</chord>
+  </metrics>
+
+  <!-- Mass -->
+  <mass_balance>
+    <emptywt unit="LBS">1200</emptywt>
+    <location name="CG" unit="FT">
+      <x>0</x><y>0</y><z>0</z>
+    </location>
+  </mass_balance>
+
+  <!-- Ground contact -->
+  <ground_reactions>
+    <contact type="BOGEY" name="nose">
+      <location unit="FT"><x>4</x><y>0</y><z>-1</z></location>
+    </contact>
+    <contact type="BOGEY" name="left-main">
+      <location unit="FT"><x>-1</x><y>-3</y><z>-1</z></location>
+    </contact>
+    <contact type="BOGEY" name="right-main">
+      <location unit="FT"><x>-1</x><y>3</y><z>-1</z></location>
+    </contact>
+  </ground_reactions>
+
+<aerodynamics>
+  <!-- Minimal LIFT axis -->
+  <axis name="LIFT" type="BODY-AXES">
+    <function name="CL">
+      <value>0.0</value>
+    </function>
+  </axis>
+
+  <!-- Minimal SIDE axis -->
+  <axis name="SIDE" type="BODY-AXES">
+    <function name="CY">
+      <value>0.0</value>
+    </function>
+  </axis>
+
+  <!-- Minimal DRAG axis -->
+  <axis name="DRAG" type="BODY-AXES">
+    <function name="CD">
+      <value>0.02</value>
+    </function>
+  </axis>
+</aerodynamics>
+
+  <!-- Propulsion -->
+  <propulsion>
+    <engine file="TestEngine" type="Piston">
+    <debug print="ALL"/>
+      <feed>0</feed>
+        <thruster file="prop">
+            <location unit="FT"><x>5</x><y>0</y><z>0</z></location>
+            <orient unit="DEG"><pitch>0</pitch><roll>0</roll><yaw>0</yaw></orient>
+            <sense>1</sense>
+        </thruster>
+    </engine>
+
+    <tank type="FUEL" number="0">
+      <location unit="IN">
+        <x> 86.29 </x>
+        <y>-106.89 </y>
+        <z> 26.33 </z>
+      </location>
+      <capacity unit="LBS"> 78.0 </capacity>
+      <contents unit="LBS">  61.79 </contents>
+      <type>AVGAS</type>  
+    </tank>
+  </propulsion>
+
+<systems>
+   <!-- empty or minimal -->
+</systems>
+
+<!--systems file="eng-system"/-->
+<!--debug>
+    <property>debug/engine</property>
+    <property>debug/propulsion</property>
+    <property>debug/file</property>
+</debug-->
+
+</fdm_config>

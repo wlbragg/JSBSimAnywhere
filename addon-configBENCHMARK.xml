@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <addon>
+        <id>org.flightgear.addons.JSBSimAnywhere</id>
+        <name>JSBSimAnywhere</name>
+        <version>0.1</version>
+        <engines>
+            <engine>
+                <name>AddonJSBSimAnywhereEngine</name>
+                <path>Engines</path>
+                <model>
+                    <name>c172p</name>
+                </model>
+            </engine>
+        </engines>
+        <fdm>
+            <jsbsim>
+                <debug>true</debug>
+                <fdm-control>
+                    <mode>benchmark</mode>
+                    <addon-model>benchmark</addon-model>
+                </fdm-control>
+                <publish>
+                    <property>benchmark/input</property>
+                    <property>benchmark/target</property>
+                    <property>fcs/benchmark/math-output</property>
+                    <property>fcs/benchmark/pid-output</property>
+                    <property>fcs/benchmark/filter-output</property>
+                </publish>
+            </jsbsim>
+        </fdm>
+    </addon>
+    <addons>
+        <by-id>
+            <org.flightgear.addons.JSBSimAnywhere>
+                <addon-devel>
+                </addon-devel>
+            </org.flightgear.addons.JSBSimAnywhere>
+        </by-id>
+    </addons>
+</PropertyList>
+
+

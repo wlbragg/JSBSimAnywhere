@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<flight_control name="TestFCS" version="2.0">
+
+  <channel name="pitch">
+    <input>/controls/flight/elevator</input>
+    <output>fcs/elevator-pos-norm</output>
+  </channel>
+
+  <channel name="roll">
+    <input>/controls/flight/aileron</input>
+    <output>fcs/aileron-pos-norm</output>
+  </channel>
+
+  <channel name="yaw">
+    <input>/controls/flight/rudder</input>
+    <output>fcs/rudder-pos-norm</output>
+  </channel>
+
+</flight_control>

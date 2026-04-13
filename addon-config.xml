@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <addon>
+        <id>org.flightgear.addons.JSBSimAnywhere</id>
+        <name>JSBSimAnywhere</name>
+        <version>0.1</version>
+        <engines>
+            <engine>
+                <name>AddonJSBSimAnywhereEngine</name>
+                <path>Engines</path>
+                <model>
+                    <name>TestPlane</name>
+                </model>
+            </engine>
+        </engines>
+        <fdm>
+            <jsbsim>
+                <!--fdm-control-->
+                    <!-- used to bypass FGFS default loaded aircraft FDM -->
+                    <!--disable-default>update</disable-default>
+                    <disable-default>init</disable-default>
+                <fdm-control-->
+                <debug>true</debug>
+                <fdm-control>
+                    <path></path>
+                    <!--mode>benchmark</mode>
+                    <addon-model>benchmark</addon-model-->
+                    <mode>aircraft</mode>
+                    <addon-model>TestPlane</addon-model>
+                </fdm-control>
+                <publish>
+                    <property>fcs/aileron-cmd-norm</property>
+                    <property>fcs/elevator-cmd-norm</property>
+                    <property>velocities/u-fps</property>
+                    <property>propulsion/engine[0]/rpm</property>
+                    <property>propulsion/engine[0]/thrust-lbs</property>
+                    <property>propulsion/engine[0]/power-available</property>
+                    <property>aero/cl</property>
+                    <property>propulsion/engine[0]/throttle-cmd-norm</property>
+                    <property>propulsion/engine[0]/throttle</property>
+                    <property>propulsion/engine[0]/mixture-cmd-norm</property>
+                    <property>propulsion/engine[0]/mixture</property>
+                    <property>propulsion/engine[0]/starter_cmd</property>
+                    <property>propulsion/engine[0]/starter</property>
+                    <property>propulsion/engine[0]/starter-rpm</property>
+                    <property>propulsion/magnetos_cmd</property>
+                    <property>propulsion/magnetos</property>
+                    <property>propulsion/engine[0]/running</property>
+                    <property>propulsion/engine[0]/rpm</property>
+                    <property>propulsion/engine[0]/power</property>
+                    <property>propulsion/engine[0]/fuel-flow</property>
+                    <property>propulsion/engine[0]/torque</property>
+                </publish>
+            </jsbsim>
+        </fdm>
+    </addon>
+    <addons>
+        <by-id>
+            <org.flightgear.addons.JSBSimAnywhere>
+                 <compatibility>
+                    <!-- Compatibility scanning disabled for now -->
+                    <enabled>false</enabled>
+                    <full-scan>false</full-scan>
+                    <log-all>false</log-all>
+                </compatibility>
+                <addon-devel>
+                </addon-devel>
+            </org.flightgear.addons.JSBSimAnywhere>
+        </by-id>
+    </addons>
+</PropertyList>
+
+

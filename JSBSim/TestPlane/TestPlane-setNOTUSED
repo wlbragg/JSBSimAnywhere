@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+  <sim>
+        <description>TestPlane (Addon JSBSimAnywhere)</description>
+        <author>Wayne Bragg</author>
+        <status>Development</status>
+
+        <!-- Load the 3D model -->
+        <model>
+            <path archive="y">Models/TestPlane.xml</path>
+            <offsets>
+              <x-m>0</x-m>
+              <y-m>0</y-m>
+              <z-m>0</z-m>
+            </offsets>
+        </model>
+  </sim>
+
+  <!-- Point FG to your addon-native JSBSim model -->
+  <flight-model>
+    <jsbsim>
+      <model>TestPlane</model>
+      <path>../../../JSBSim/TestPlane</path>
+    </jsbsim>
+  </flight-model>
+
+
+  <!-- Cockpit not needed -->
+  <cockpit>
+    <enable>false</enable>
+  </cockpit>
+
+</PropertyList>
